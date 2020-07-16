@@ -16,13 +16,16 @@ def get_list_depute_url()
   links_array
 end
 
-get_list_depute_url()
 
 
 def get_data_from_one_depute(index)
   url = index
   doc = Nokogiri::HTML(open(url))
   email = doc.xpath("/html/body/div/div[3]/div/div/div/section[1]/div/article/div[3]/div/dl/dd[4]/ul/li[2]/a").text
+
+"/html/body/div/div[3]/div/div/div/section[1]/div/article/div[3]/div/dl/dd[4]/ul/li[2]/a"
+"/html/body/div/div[3]/div/div/div/section[1]/div/article/div[3]/div/dl/dd[3]/ul/li[2]/a"
+"/html/body/div/div[3]/div/div/div/section[1]/div/article/div[3]/div/dl/dd[3]/ul/li[1]/a"
 
   full_name = doc.xpath("/html/body/div/div[3]/div/div/div/section[1]/div/article/div[2]/h1").text.split.drop(1)
   name = full_name[0]
@@ -35,35 +38,18 @@ def get_data_from_one_depute(index)
   hash
 end
 
-#get_data_from_one_depute()
 
 
 def final_data() 
   data = []
   links_array = get_list_depute_url()
+  #l = 50
   l = links_array.length
   (0...l).each do |x|
     index = links_array[x]
-    data.push(get_data_from_one_depute(index))
+    puts data.push(get_data_from_one_depute(index))
   end
   data
 end
 
-p final_data()
-=begin
-a = [
-  { 
-    "first_name" => "Jean",
-    "last_name" => "Durant",
-    "email" => "jean.durant@assemblée.fr"
-  },
-  { 
-    "first_name" => "Martin",
-    "last_name" => "Dupont",
-    "email" => "martin.dupont@assemblée.fr"
-  },
-  etc
-]
-
-
-=end
+final_data()
