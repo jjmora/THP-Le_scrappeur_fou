@@ -23,9 +23,9 @@ def get_data_from_one_depute(index)
   doc = Nokogiri::HTML(open(url))
   email = doc.xpath("/html/body/div/div[3]/div/div/div/section[1]/div/article/div[3]/div/dl/dd[4]/ul/li[2]/a").text
 
-"/html/body/div/div[3]/div/div/div/section[1]/div/article/div[3]/div/dl/dd[4]/ul/li[2]/a"
-"/html/body/div/div[3]/div/div/div/section[1]/div/article/div[3]/div/dl/dd[3]/ul/li[2]/a"
-"/html/body/div/div[3]/div/div/div/section[1]/div/article/div[3]/div/dl/dd[3]/ul/li[1]/a"
+# "/html/body/div/div[3]/div/div/div/section[1]/div/article/div[3]/div/dl/dd[4]/ul/li[2]/a"
+# "/html/body/div/div[3]/div/div/div/section[1]/div/article/div[3]/div/dl/dd[3]/ul/li[2]/a"
+# "/html/body/div/div[3]/div/div/div/section[1]/div/article/div[3]/div/dl/dd[3]/ul/li[1]/a"
 
   full_name = doc.xpath("/html/body/div/div[3]/div/div/div/section[1]/div/article/div[2]/h1").text.split.drop(1)
   name = full_name[0]
@@ -52,4 +52,17 @@ def final_data()
   data
 end
 
-final_data()
+
+## Pour tester l-application
+def init
+  puts "Mairie Christmas -> What do you want to do?"
+  puts "  * A = get the emails of the Deputes exercise (CAREFUL, it will take some time to load all the data)"
+  puts "  * Any other character = cancel => you can avoid the loading of the data (Do it for testing with rspec"
+  init = gets.chomp
+  if init == "A" 
+    final_data()
+  end
+end
+
+init # Initialize the program and give the user the option to load the data or to avoid the loading of the data
+

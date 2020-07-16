@@ -36,6 +36,7 @@ def check_get_hash_one_crypto()
   check_array
 end
 
+
 def check_if_cryptos(crypto1, crypto2, crypto3, number)
   array = get_crypto_values(number)
   count = 0
@@ -47,11 +48,15 @@ def check_if_cryptos(crypto1, crypto2, crypto3, number)
   count
 end
 
+
+def check_if_name_exists(crypto)
+  h = get_crypto_values(2)
+  h[0].keys
+end
+
+def check_if_value_exists(crypto)
+  h = get_crypto_values(2)
+  h[0][crypto] ? true : false
+end
+
 get_crypto_values(1)
-check_get_hash_one_crypto()
-
-check_if_cryptos('Bitcoin', 'Ethereum','XRP', 50)
-
-
-
-

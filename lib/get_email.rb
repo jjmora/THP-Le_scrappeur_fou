@@ -65,15 +65,15 @@ def data_ville_emails()
   a
 end
 
-p data_ville_emails()
+## Pour tester l-application
+def init
+  puts "Mairie Christmas -> What do you want to do?"
+  puts "  * A = get the emails of the Mairie christmas exercise (it will take some time to load all the data)"
+  puts "  * Any other character = cancel => you can avoid the loading of the data (Do it for testing with rspec"
+  init = gets.chomp
+  if init == "A" 
+    puts data_ville_emails()
+  end
+end
 
-
-=begin
-
-a = [
-  { "ville_1" => "email_1" },
-  { "ville_2" => "email_2" }, 
-  etc
-]
-
-=end
+init # Initialize the program and give the user the option to load the data or to avoid the loading of the data
