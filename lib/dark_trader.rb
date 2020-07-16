@@ -13,11 +13,11 @@ def get_hash_one_crypto(array, doc, iterator)
 end
 
 
-def get_crypto_values(number)
+def get_crypto_values()
   doc = Nokogiri::HTML(open('https://coinmarketcap.com/all/views/all/'))
   hash = Hash.new
   cryptos = []
-  (1..number).each do |i|
+  (1..200).each do |i|
     get_hash_one_crypto(cryptos, doc, i)
   end
   cryptos
@@ -59,4 +59,18 @@ def check_if_value_exists(crypto)
   h[0][crypto] ? true : false
 end
 
-get_crypto_values(1)
+def init
+  puts "If you want to load the 200 Cryptos and values presh =>"
+  puts "> A for an Array"
+  puts "> L for a List"
+  init = gets.chomp
+  array = []
+  if init == "A" 
+    p get_crypto_values()
+  end
+  if init == "L" 
+    puts get_crypto_values()
+  end
+end
+
+init()
